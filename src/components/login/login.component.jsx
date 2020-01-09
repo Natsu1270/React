@@ -1,8 +1,9 @@
 import React from 'react'
 import FormInput from '../form-input/form-input.component'
 import CustomButton from '../custom-button/custom-button.component'
-import {signInWithGoogle} from "../../firebase/firebase.util";
+import { auth, signInWithGoogle } from "../../firebase/firebase.util";
 import './login.style.scss'
+import { Redirect } from 'react-router-dom';
 
 class Login extends React.Component {
     constructor(props) {
@@ -14,8 +15,16 @@ class Login extends React.Component {
         }
     }
 
-    handleSubmit = (event) => {
+    handleSubmit = async (event) => {
         event.preventDefault()
+        const { email, password } = this.state;
+
+        try {
+            await auth.signInWithEmailAndPassword(email, password)
+            props.history.push("/");
+        } catch (error) {
+            alert(error)
+        }
 
         this.setState({ email: '', password: '' })
 
@@ -24,7 +33,6 @@ class Login extends React.Component {
     handleChange = event => {
         const { value, name } = event.target
         this.setState({ [name]: value })
-        console.log([name], value)
     }
 
     render() {
@@ -33,7 +41,6 @@ class Login extends React.Component {
         return (
             <div className="login">
                 <h2>I have already have an account</h2>
-                <span>Login with email and password</span>
 
                 <form action="/login" onSubmit={this.handleSubmit}>
                     <FormInput label="email" type="text" id="email" name="email" value={this.state.email} handleChange={this.handleChange} required />

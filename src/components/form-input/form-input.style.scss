@@ -1,0 +1,20 @@
+.form-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+
+    .form-input-label {
+        margin-right: 20px;
+    }
+
+    .form-input {
+        padding: 10px 10px;
+        border: none;
+        border-bottom: 1px solid cornflowerblue;
+
+        &:focus {
+            outline: none;
+        }
+    }
+}
