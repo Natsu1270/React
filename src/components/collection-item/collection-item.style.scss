@@ -4,6 +4,9 @@
     flex-direction: column;
     height: 350px;
     align-items: center;
+    background-color: lightgrey;
+    box-shadow: 0 1.5rem 4rem rgba(#000, .15);
+    overflow: hidden;
 
     &__image {
         width: 100%;
@@ -15,6 +18,8 @@
     &__content {
         width: 100%;
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
+        margin-bottom: 10px;
+        margin-top: 10px;
     }
 }

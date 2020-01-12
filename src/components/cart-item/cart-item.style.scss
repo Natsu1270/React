@@ -1,0 +1,29 @@
+.cart-item {
+    width: 80%;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    align-items: center;
+    border-bottom: 1px solid lightgray;
+
+    .content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .name {
+            font-weight: bold;
+        }
+
+        img {
+            width: 70px;
+            margin-right: 5px;
+        }
+    }
+
+    .quantity {
+        border: 1px solid lightgrey;
+        padding: 5px 10px;
+    }
+}

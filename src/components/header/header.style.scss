@@ -1,15 +1,18 @@
 .header {
+  padding-left: 40px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  background-color: #000000;
+  background-color: #fdfdfd;
+  box-shadow: 0 5px 15px rgba($color: #000000, $alpha: 0.1);
+  margin-bottom: 20px;
 
   .link {
 
     &,
     &:active,
     &:visited {
-      color: #ffffff;
+      color: #000000;
     }
 
     text-decoration: none;
@@ -18,15 +21,13 @@
   }
 
   &--menu {
-    flex: 0 0 50%;
+    flex: 0 0 40%;
     list-style: none;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
 
     li {
       margin-right: 20px;
-
-
     }
   }
 }

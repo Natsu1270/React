@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 
 import HomePage from './pages/homepage/homepage.component'
 import Shoppage from './pages/shop/shop.component'
@@ -10,36 +10,29 @@ import Connect from './pages/connect/connect.component'
 
 import { auth, createUserProfileDocument } from "./firebase/firebase.util";
 
+import { connect } from 'react-redux'
 
+import { setCurrentUser } from './redux/user/user.action'
 
 class App extends React.Component {
-    constructor() {
-        super();
-
-        this.state = {
-            currentUser: null
-        }
-    }
 
     unSubcribeFromAuth = null;
 
     componentDidMount() {
+        const { setCurrentUser } = this.props
         this.unSubcribeFromAuth = auth.onAuthStateChanged(async user => {
 
             if (user) {
-                console.log(user)
                 const userRef = await createUserProfileDocument(user)
                 userRef.onSnapshot(snapShot => {
-                    this.setState({
-                        currentUser: {
-                            id: snapShot.id,
-                            ...snapShot.data()
-                        }
+                    setCurrentUser({
+                        id: snapShot.id,
+                        ...snapShot.data()
                     })
                 })
             }
 
-            this.setState({ currentUser: user })
+            setCurrentUser(user)
         })
     }
 
@@ -51,11 +44,11 @@ class App extends React.Component {
         return (
             <Router>
                 <div className="App">
-                    <Header currentUser={this.state.currentUser} auth={auth} />
+                    <Header auth={auth} />
                     <Switch>
                         <Route exact path='/' component={HomePage} />
                         <Route path='/shop' component={Shoppage} />
-                        <Route path='/connect' component={Connect} />
+                        <Route exact path='/connect' render={() => this.props.currentUser ? <Redirect to="/" /> : <Connect />} />
                     </Switch>
                 </div>
             </Router>
@@ -63,4 +56,12 @@ class App extends React.Component {
     }
 }
 
-export default App;
+const mapStateToProps = ({ user }) => ({
+    currentUser: user.currentUser
+})
+
+const mapDispatchToProps = dispatch => ({
+    setCurrentUser: user => dispatch(setCurrentUser(user))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
