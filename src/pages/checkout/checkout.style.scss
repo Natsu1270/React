@@ -1,0 +1,52 @@
+.checkout {
+    width: 60%;
+    margin: 0 auto;
+    margin-top: 30px;
+    background-color: #fdfdfd;
+    padding: 20px;
+
+    &-header {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        height: 40px;
+        border-bottom: 1px solid darkgray;
+
+        .header-item {
+            span {
+                font-weight: bold;
+
+            }
+        }
+    }
+
+    &-item {
+        padding: 10px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+        border-bottom: 1px solid lightgrey;
+
+        button {
+            border: none;
+            padding: 5px 10px;
+            color: white;
+            background-color: red;
+        }
+    }
+
+    img {
+        width: 100px;
+    }
+
+    &-total {
+        text-align: right;
+        font-size: 25px;
+    }
+
+    .quan-btn {
+        cursor: pointer;
+        font-weight: bold;
+    }
+}

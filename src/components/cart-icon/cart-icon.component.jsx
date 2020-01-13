@@ -13,8 +13,8 @@ const CartIcon = () => {
     const dispatch = useDispatch()
 
     return (
-        <div className="cart-icon">
-            <ShoppingIcon className="shopping-icon" onClick={() => dispatch(toggleCartHidden())} />
+        <div className="cart-icon" onClick={() => dispatch(toggleCartHidden())}>
+            <ShoppingIcon className="shopping-icon" />
             <span className="item-count">{cartItemCount}</span>
         </div>
     )

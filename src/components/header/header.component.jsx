@@ -1,17 +1,27 @@
 import React from "react";
 import { Link } from 'react-router-dom'
+import { createStructuredSelector } from 'reselect'
+
 
 import { connect, useSelector, shallowEqual } from 'react-redux'
 import CartIcon from '../cart-icon/cart-icon.component'
 import CartDropdown from '../cart-dropdown/cart-dropdown.component'
 
+import { selectCartHidden } from '../../redux/cart/cart.selectors'
+import { selectCurrentUser } from '../../redux/user/use.seletor'
+
 import './header.style.scss'
 
 const Header = ({ auth }) => {
-    const { isHidden, currentUser } = useSelector(state => ({
-        isHidden: state.cart.hidden,
-        currentUser: state.user.currentUser
-    }), shallowEqual)
+    // const { isHidden, currentUser } = useSelector(state => ({
+    //     isHidden: state.cart.hidden,
+    //     currentUser: state.user.currentUser
+    // }), shallowEqual)
+
+    const { isHidden, currentUser } = useSelector(createStructuredSelector({
+        isHidden: selectCartHidden,
+        currentUser: selectCurrentUser
+    }))
 
     return (
         <div className="header-com">
@@ -35,12 +45,12 @@ const Header = ({ auth }) => {
     )
 }
 
-const mapStatetoProps = ({ user: { currentUser } }) => {
-    console.log('Header redux')
-    return ({
-        currentUser,
-    })
-}
+// const mapStatetoProps = ({ user: { currentUser } }) => {
+//     console.log('Header redux')
+//     return ({
+//         currentUser,
+//     })
+// }
 
 export default Header
 

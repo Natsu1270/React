@@ -14,3 +14,14 @@ export const addItemToCart = (cartItems, item) => {
 export const calCartNum = cartItems => {
     return cartItems.reduce((count, cartItem) => count + cartItem.quantity, 0)
 }
+
+export const removeItem = (cartItems, removedItem) => {
+    return cartItems.filter(item => item.id !== removedItem.id)
+}
+
+
+export const decreaseQuan = (cartItems, removedItem) => {
+    return cartItems.map(cartItem =>
+        cartItem.id === removedItem.id ? { ...cartItem, quantity: cartItem.quantity - 1 } : cartItem
+    )
+}
