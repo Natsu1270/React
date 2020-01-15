@@ -1,0 +1,7 @@
+linear-gradient(30deg, #79b8ff, #b392f0)
+pink-red: #ea4a5a
+
+
+https://githistory.xyz/
+https://github.com/practicalAI/practicalAI
+https://github.com/TrillCyborg/fullstack
