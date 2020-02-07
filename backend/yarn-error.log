@@ -1,0 +1,58 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js dev
+
+PATH: 
+  C:\Program Files\Java\jdk1.8.0_231\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Microsoft VS Code\bin;C:\Program Files\nodejs\;C:\adb;C:\Program Files\Git\cmd;G:\Java tools\apache-maven-3.6.2\bin;C:\Program Files\PostgreSQL\12\bin;G:\Java tools\cmder\bin;C:\Program Files\MongoDB\Server\4.2\bin;C:\Program Files (x86)\gdipp\;C:\php;G:\Java tools\cmder;C:\ProgramData\ComposerSetup\bin;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;C:\Program Files (x86)\Yarn\bin\;C:\Users\Natsu\AppData\Local\Programs\Python\Python37-32\Scripts\;C:\Users\Natsu\AppData\Local\Programs\Python\Python37-32\;C:\Users\Natsu\AppData\Local\Microsoft\WindowsApps;;C:\Program Files\JetBrains\IntelliJ IDEA 2019.2\bin;;C:\Program Files\JetBrains\PyCharm 2019.2.3\bin;;C:\Users\Natsu\AppData\Roaming\npm;C:\Program Files\JetBrains\WebStorm 2019.2.3\bin;;C:\Program Files\JetBrains\DataGrip 2019.2.6\bin;;C:\Users\Natsu\AppData\Roaming\Composer\vendor\bin;C:\Users\Natsu\AppData\Local\Yarn\bin
+
+Yarn version: 
+  1.21.1
+
+Node version: 
+  10.16.3
+
+Platform: 
+  win32 x64
+
+Trace: 
+  SyntaxError: D:\React\ereact\backend\package.json: Unexpected token } in JSON at position 605
+      at JSON.parse (<anonymous>)
+      at C:\Program Files (x86)\Yarn\lib\cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (C:\Program Files (x86)\Yarn\lib\cli.js:310:30)
+      at C:\Program Files (x86)\Yarn\lib\cli.js:321:13
+
+npm manifest: 
+  {
+    "name": "backend",
+    "version": "1.0.0",
+    "engines": {
+      "node": "10.16.3",
+      "npm": "6.13.4"
+    },
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "client": "cd .. && cd client && yarn start",
+      "server": "nodemon index.js",
+      "build": "cd .. && cd client && npm run build",
+      "dev": "concerrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
+      "start": "node index.js"
+  
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "body-parser": "^1.19.0",
+      "cors": "^2.8.5",
+      "dotenv": "^8.2.0",
+      "express": "^4.17.1",
+      "stripe": "^8.4.0"
+    },
+  
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
